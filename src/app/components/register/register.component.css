@@ -1,0 +1,7 @@
+form {
+    width: 100%;
+    margin: 25px;
+}
+form md-form-field {
+    width: 45%;
+}

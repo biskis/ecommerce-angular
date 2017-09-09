@@ -1,3 +1,17 @@
-<p>
-  register works!
-</p>
+<form (submit)="onRegister()">
+    <md-form-field>
+        <input mdInput="text" type="text" placeholder="First name" [formControl]="registerForm.controls['first_name']">
+    </md-form-field>
+    <md-form-field>
+        <input mdInput="text" type="text" placeholder="Last name" [formControl]="registerForm.controls['last_name']">
+    </md-form-field>
+    <md-form-field>
+        <input mdInput="email" type="email" placeholder="Email" [formControl]="registerForm.controls['email']">
+    </md-form-field>
+    <md-form-field>
+        <input mdInput="password" type="password" placeholder="Password" [formControl]="registerForm.controls['password']">
+    </md-form-field>
+
+    <br/>
+    <button md-raised-button>Register</button>
+</form>

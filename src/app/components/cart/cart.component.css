@@ -1,0 +1,10 @@
+.table_cart {
+    width: 100%;
+}
+.table_cart .col_title {
+    text-align: left;
+}
+.table_cart .col_price, .table_cart .col_quantity {
+    width: 100px;
+    text-align: center;
+}

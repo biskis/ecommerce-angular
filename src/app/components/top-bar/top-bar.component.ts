@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import * as fromRoot from '../../reducers';
+import * as cart from '../../actions/cart';
+import {Store} from "@ngrx/store";
+
 
 @Component({
   selector: 'app-top-bar',
@@ -7,9 +11,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TopBarComponent implements OnInit {
 
-  constructor() { }
+    public cartItems: any;
+    private sub: any;
 
-  ngOnInit() {
-  }
+    constructor(private store: Store<fromRoot.State>) {
+        this.sub = this.store.select(fromRoot.getCart).subscribe((data) => this.cartItems = data);
+
+    }
+
+    ngOnInit() {
+
+    }
+
+    ngOnDestroy() {
+        if(this.sub) {
+            this.sub.unsubscribe();
+        }
+    }
 
 }

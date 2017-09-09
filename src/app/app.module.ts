@@ -14,7 +14,16 @@ import {ApiService} from "./services/api.service";
 import {HttpModule} from "@angular/http";
 import {SessionService} from "./services/session.service";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {MdButtonModule, MdCardModule, MdToolbarModule} from "@angular/material";
+import {
+    MdButtonModule, MdCardModule, MdInputModule, MdListModule, MdTableModule,
+    MdToolbarModule
+} from "@angular/material";
+import {StoreModule} from "@ngrx/store";
+import {EffectsModule} from "@ngrx/effects";
+import {metaReducers, reducers} from "./reducers/index";
+import { OrdernpmPipe } from './pipes/ordernpm.pipe';
+import {ToasterModule} from "angular2-toaster";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
     declarations: [
@@ -25,16 +34,22 @@ import {MdButtonModule, MdCardModule, MdToolbarModule} from "@angular/material";
         TopBarComponent,
         CartComponent,
         ProfileComponent,
-        ProductInListComponent
+        ProductInListComponent,
+        OrdernpmPipe
     ],
     imports: [
         BrowserModule,
         AppRoutingModule,
         HttpModule,
         BrowserAnimationsModule,
+        FormsModule,
+        ReactiveFormsModule,
 
+        StoreModule.forRoot(reducers, {metaReducers}),
+        // EffectsModule.forRoot([])
 
-        MdButtonModule, MdToolbarModule, MdCardModule
+        ToasterModule,
+        MdButtonModule, MdToolbarModule, MdCardModule, MdListModule, MdTableModule, MdInputModule
     ],
     providers: [ApiService, SessionService],
     bootstrap: [AppComponent]
