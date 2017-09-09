@@ -5,7 +5,9 @@
 
   <span>
     <a routerLink="/cart" md-button>Cart ({{cartItems.length}} items)</a>
-    <a routerLink="/login" md-button>Login</a>
-    <a routerLink="/register" md-button>Register</a>
+    <a routerLink="/login" md-button *ngIf="!hasSession">Login</a>
+    <a routerLink="/register" md-button *ngIf="!hasSession">Register</a>
+    <a routerLink="/profile" md-button *ngIf="hasSession">Profile</a>
+    <a routerLink="/orders" md-button *ngIf="hasSession">Orders</a>
   </span>
 </md-toolbar>

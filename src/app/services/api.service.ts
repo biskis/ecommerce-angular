@@ -6,12 +6,13 @@ import {environment} from "../../environments/environment";
 import {SessionService} from "./session.service";
 import {Product} from "../models/product";
 import {User} from "../models/user";
+import {ToasterService} from "angular2-toaster";
 
 
 @Injectable()
 export class ApiService {
 
-    constructor(private http: Http, private sessionService: SessionService) {
+    constructor(private http: Http, private sessionService: SessionService, private toasterService: ToasterService) {
     }
 
     private getBaseUrl(): string {
@@ -61,6 +62,8 @@ export class ApiService {
                 localStorage.removeItem("ecommerce_auth_token");
                 localStorage.removeItem("ecommerce_user");
                 window.location.replace("/login");
+            } else {
+                this.toasterService.pop('error', errorBody.error.msg);
             }
         }
 
@@ -81,6 +84,12 @@ export class ApiService {
     login(data) : Promise<any> {
         return this.sendPost(this.getBaseUrl() + "user/login", data);
     }
+    profileUpdate(data) : Promise<any> {
+        return this.sendPost(this.getBaseUrl() + "user/update", data);
+    }
 
 
+    createOrder(data) : Promise<any> {
+        return this.sendPost(this.getBaseUrl() + "order/create", data);
+    }
 }

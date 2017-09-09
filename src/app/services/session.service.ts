@@ -10,7 +10,9 @@ export class SessionService {
 
     setSession(auth_key: string, user: any) {
         localStorage.setItem("auth_key", auth_key);
-        localStorage.setItem("ecommerce_user", JSON.stringify(user));
+        if(user) {
+            this.setUser(user);
+        }
     }
 
     getSession() {
@@ -20,9 +22,13 @@ export class SessionService {
         return null;
     }
 
+    setUser(user) {
+        localStorage.setItem("ecommerce_user", JSON.stringify(user));
+    }
+
     getUser() {
         if(localStorage.getItem("ecommerce_user")) {
-            return localStorage.getItem("ecommerce_user");
+            return JSON.parse(localStorage.getItem("ecommerce_user"));
         }
         return null;
     }

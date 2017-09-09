@@ -1,21 +1,36 @@
-<h3>Cart Items</h3>
+<div *ngIf="showSuccess" class="clear_text">The order has been received</div>
+<div *ngIf="!showSuccess">
+    <h3>Cart Items</h3>
 
-<table class="table_cart">
-    <tr>
-        <th class="col_title">Product</th>
-        <th class="col_quantity">Quantity</th>
-        <th class="col_price">Price</th>
-    </tr>
-    <tr *ngFor="let cartItem of cartItems ">
-        <td class="col_title">{{cartItem.data.title}}</td>
-        <td class="col_quantity"><i class="material-icons" (click)="onRemove(cartItem.data)">remove</i> <span>{{cartItem.quantity}}</span>
-            <i class="material-icons" (click)="onAdd(cartItem.data)">add</i></td>
-        <td class="col_price">{{ (cartItem.quantity * cartItem.data.price) | number:'1.2-2' }}</td>
-    </tr>
-</table>
+    <table class="table_cart">
+        <tr>
+            <th class="col_title">Product</th>
+            <th class="col_quantity">Quantity</th>
+            <th class="col_price">Price</th>
+        </tr>
+        <tr *ngFor="let cartItem of cartItems ">
+            <td class="col_title">{{cartItem.data.title}}</td>
+            <td class="col_quantity"><i class="material-icons" (click)="onRemove(cartItem.data)">remove</i> <span>{{cartItem.quantity}}</span>
+                <i class="material-icons" (click)="onAdd(cartItem.data)">add</i></td>
+            <td class="col_price">${{ (cartItem.quantity * cartItem.data.price) | number:'1.2-2' }}</td>
+        </tr>
+        <tr>
+            <td>Total</td>
+            <td></td>
+            <td class="col_price">${{getTotal() | number:'1.2-2'}}</td>
+        </tr>
+    </table>
 
-<br/>
-<br/>
-<br/>
-<br/>
-<div>Please <a routerLink="/login">Login</a> or <a routerLink="/register">Register</a> to continue</div>
+    <div *ngIf="!hasSession">
+        <br/><br/>
+        <div>Please <a routerLink="/login">Login</a> or <a routerLink="/register">Register</a> to continue</div>
+    </div>
+    <div *ngIf="hasSession">
+        <h3>Address</h3>
+        <p>{{user.addressStreet}} {{user.addressCity}} {{user.addressState}} {{user.addressPostcode}}</p>
+        <p><a routerLink="/profile">Change address</a></p>
+
+        <button md-raised-button (click)="openCheckout()">Purchase</button>
+    </div>
+</div>
+

@@ -8,3 +8,8 @@
     width: 100px;
     text-align: center;
 }
+
+.clear_text {
+    margin: 25px auto;
+    font-size: 30px;
+}

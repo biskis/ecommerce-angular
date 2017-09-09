@@ -21,6 +21,9 @@ export function reducer(state = cartModel.defaults, action: cart.Actions): cartM
             quantity = item.quantity - 1;
             stateCopy.cart.push({quantity: quantity, data: action.payload});
             return merge({}, stateCopy);
+        case cart.ActionTypes.CLEAR:
+            stateCopy.cart = [];
+            return merge({}, stateCopy)
         default:
             return state;
     }

@@ -1,3 +1,23 @@
-<p>
-  profile works!
-</p>
+<form (submit)="onUpdateProfile()">
+  <md-form-field>
+    <input mdInput="text" type="text" placeholder="First name" [formControl]="userForm.controls['first_name']">
+  </md-form-field>
+  <md-form-field>
+    <input mdInput="text" type="text" placeholder="Last name" [formControl]="userForm.controls['last_name']">
+  </md-form-field>
+  <md-form-field>
+    <input mdInput="text" type="text" placeholder="Address street" [formControl]="userForm.controls['address_street']">
+  </md-form-field>
+  <md-form-field>
+    <input mdInput="text" type="text" placeholder="Address City" [formControl]="userForm.controls['address_city']">
+  </md-form-field>
+  <md-form-field>
+    <input mdInput="text" type="text" placeholder="Address State" [formControl]="userForm.controls['address_state']">
+  </md-form-field>
+  <md-form-field>
+    <input mdInput="text" type="text" placeholder="Address Postcode" [formControl]="userForm.controls['address_postcode']">
+  </md-form-field>
+
+  <br/>
+  <button md-raised-button>Update</button>
+</form>
