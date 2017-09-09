@@ -3,6 +3,7 @@ import * as fromRoot from '../../reducers';
 import * as cart from '../../actions/cart';
 import {Store} from "@ngrx/store";
 import {SessionService} from "../../services/session.service";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -14,11 +15,9 @@ export class TopBarComponent implements OnInit {
 
     public cartItems: any;
     private sub: any;
-    public hasSession: boolean;
 
-    constructor(private store: Store<fromRoot.State>, private sessionService: SessionService) {
+    constructor(private store: Store<fromRoot.State>, public sessionService: SessionService, private router: Router) {
         this.sub = this.store.select(fromRoot.getCart).subscribe((data) => this.cartItems = data);
-        this.hasSession = !!sessionService.getSession();
     }
 
     ngOnInit() {
@@ -29,6 +28,11 @@ export class TopBarComponent implements OnInit {
         if(this.sub) {
             this.sub.unsubscribe();
         }
+    }
+
+    logout() {
+        this.sessionService.removeSession();
+        this.router.navigateByUrl("/login");
     }
 
 }
