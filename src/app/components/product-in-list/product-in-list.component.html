@@ -1,1 +1,10 @@
-{{product.title}}<br/>{{product.price}}
+<md-card class="product" >
+    <md-card-header>
+        <md-card-title>{{product.title}}</md-card-title>
+        <md-card-subtitle>{{product.price}}</md-card-subtitle>
+    </md-card-header>
+    <md-card-content>{{product.description}}</md-card-content>
+    <md-card-actions>
+        <button md-raised-button color="primary">Add to card</button>
+    </md-card-actions>
+</md-card>

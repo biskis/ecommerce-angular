@@ -13,6 +13,8 @@ import {ProductInListComponent} from './components/product-in-list/product-in-li
 import {ApiService} from "./services/api.service";
 import {HttpModule} from "@angular/http";
 import {SessionService} from "./services/session.service";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {MdButtonModule, MdCardModule, MdToolbarModule} from "@angular/material";
 
 @NgModule({
     declarations: [
@@ -28,7 +30,11 @@ import {SessionService} from "./services/session.service";
     imports: [
         BrowserModule,
         AppRoutingModule,
-        HttpModule
+        HttpModule,
+        BrowserAnimationsModule,
+
+
+        MdButtonModule, MdToolbarModule, MdCardModule
     ],
     providers: [ApiService, SessionService],
     bootstrap: [AppComponent]
