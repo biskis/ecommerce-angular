@@ -5,6 +5,7 @@ import 'rxjs/add/operator/toPromise';
 import {environment} from "../../environments/environment";
 import {SessionService} from "./session.service";
 import {Product} from "../models/product";
+import {User} from "../models/user";
 
 
 @Injectable()
@@ -72,6 +73,13 @@ export class ApiService {
 
     getProducts() :Promise<Product[]> {
         return this.sendGet(this.getBaseUrl() + "products");
+    }
+
+    register(data) : Promise<any> {
+        return this.sendPost(this.getBaseUrl() + "user/register", data);
+    }
+    login(data) : Promise<any> {
+        return this.sendPost(this.getBaseUrl() + "user/login", data);
     }
 
 
