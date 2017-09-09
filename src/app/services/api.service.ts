@@ -7,6 +7,7 @@ import {SessionService} from "./session.service";
 import {Product} from "../models/product";
 import {User} from "../models/user";
 import {ToasterService} from "angular2-toaster";
+import {Order} from "../models/order";
 
 
 @Injectable()
@@ -89,7 +90,10 @@ export class ApiService {
     }
 
 
-    createOrder(data) : Promise<any> {
+    createOrder(data) : Promise<Order> {
         return this.sendPost(this.getBaseUrl() + "order/create", data);
+    }
+    getMineOrders() : Promise<Order[]> {
+        return this.sendGet(this.getBaseUrl() + "order/mine");
     }
 }

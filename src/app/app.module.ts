@@ -24,6 +24,7 @@ import {metaReducers, reducers} from "./reducers/index";
 import { OrdernpmPipe } from './pipes/ordernpm.pipe';
 import {ToasterModule} from "angular2-toaster";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { OrdersComponent } from './components/orders/orders.component';
 
 @NgModule({
     declarations: [
@@ -35,7 +36,8 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
         CartComponent,
         ProfileComponent,
         ProductInListComponent,
-        OrdernpmPipe
+        OrdernpmPipe,
+        OrdersComponent
     ],
     imports: [
         BrowserModule,

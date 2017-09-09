@@ -25,9 +25,15 @@
         <br/><br/>
         <div>Please <a routerLink="/login">Login</a> or <a routerLink="/register">Register</a> to continue</div>
     </div>
-    <div *ngIf="hasSession">
-        <h3>Address</h3>
-        <p>{{user.addressStreet}} {{user.addressCity}} {{user.addressState}} {{user.addressPostcode}}</p>
+    <div *ngIf="hasSession && (!user.address_street || !user.billing_address_street)">
+        <br/><br/>
+        <div>Please <a routerLink="/profile">add shipping and billing addresses</a> in your profile</div>
+    </div>
+    <div *ngIf="hasSession && user.address_street && user.billing_address_street">
+        <h3>Shipping Address</h3>
+        <p>{{user.address_street}} {{user.address_city}} {{user.address_state}} {{user.address_postcode}}</p>
+        <h3>Billing Address</h3>
+        <p>{{user.billing_address_street}} {{user.billing_address_city}} {{user.billing_address_state}} {{user.billing_address_postcode}}</p>
         <p><a routerLink="/profile">Change address</a></p>
 
         <button md-raised-button (click)="openCheckout()">Purchase</button>

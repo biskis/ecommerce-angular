@@ -1,0 +1,12 @@
+table {
+    width: 100%;
+    margin: 25px;
+}
+table .col_title {
+    text-align: left;
+}
+table .col_price,
+table .col_status {
+    width: 100px;
+    text-align: center;
+}
