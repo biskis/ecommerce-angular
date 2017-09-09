@@ -1,0 +1,40 @@
+<h2>Orders</h2>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Products</th>
+        <th>Shipping Address</th>
+        <th>Billing Address</th>
+        <th>Price</th>
+        <th>Status</th>
+        <th *ngIf="canChangeStatus"></th>
+        <th *ngIf="canDelete"></th>
+    </tr>
+    <tr *ngFor="let order of orders">
+        <td>{{order._id}}</td>
+        <td>
+            <div *ngFor="let item of order.products">
+                {{item.quantity}} x {{item.data.title}}
+            </div>
+        </td>
+        <td>{{order.address.street}} {{order.address.city}} {{order.address.state}} {{order.address.postcode}}</td>
+        <td>{{order.address.street}} {{order.address.city}} {{order.address.state}} {{order.address.postcode}}</td>
+        <td>${{order.prices.total | number: '1.2-2'}}</td>
+        <td>{{order.status}}</td>
+        <td *ngIf="canChangeStatus">
+            <md-select placeholder="New Status" #new_status>
+                <md-option value="new">New</md-option>
+                <md-option value="preparing">Preparing</md-option>
+                <md-option value="packed">Packed</md-option>
+                <md-option value="delivered">Delivered</md-option>
+                <md-option value="complete">Complete</md-option>
+                <md-option value="canceled">Canceled</md-option>
+            </md-select>
+            <button md-button color="primary" (click)="setNewStatus(order, new_status.value)">Change Status</button>
+        </td>
+        <td *ngIf="canDelete">
+            <button md-button color="warn" (click)="goDelete(order)">Delete</button>
+        </td>
+    </tr>
+</table>

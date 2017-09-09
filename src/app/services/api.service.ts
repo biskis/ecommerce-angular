@@ -112,4 +112,16 @@ export class ApiService {
     adminDeleteProduct(product_id) : Promise<Product> {
         return this.sendDelete(this.getBaseUrl() + "product/delete/" + product_id);
     }
+
+    adminGetOrders() : Promise<Order[]> {
+        return this.sendGet(this.getBaseUrl() + "orders/all");
+    }
+    adminUpdateStatusOrder(order_id, new_status) : Promise<Product> {
+        return this.sendPost(this.getBaseUrl() + "order/set_status/" + order_id, {status: new_status});
+    }
+    adminDeleteOrder(order_id) : Promise<Product> {
+        return this.sendDelete(this.getBaseUrl() + "order/delete/" + order_id);
+    }
+
+
 }
