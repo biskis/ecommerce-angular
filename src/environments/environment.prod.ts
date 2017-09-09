@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+    apiBaseUrl: "http://todoProductionUrlHere.com/api/v1/"
 };
