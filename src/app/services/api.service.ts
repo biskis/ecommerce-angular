@@ -13,7 +13,7 @@ import {Order} from "../models/order";
 @Injectable()
 export class ApiService {
 
-    constructor(private http: Http, private sessionService: SessionService, private toasterService: ToasterService) {
+    constructor(private http: Http, private sessionService: SessionService) {
     }
 
     private getBaseUrl(): string {
@@ -63,8 +63,6 @@ export class ApiService {
                 localStorage.removeItem("ecommerce_auth_token");
                 localStorage.removeItem("ecommerce_user");
                 window.location.replace("/login");
-            } else {
-                this.toasterService.pop('error', errorBody.error.msg);
             }
         }
 
@@ -95,5 +93,23 @@ export class ApiService {
     }
     getMineOrders() : Promise<Order[]> {
         return this.sendGet(this.getBaseUrl() + "order/mine");
+    }
+
+
+
+
+
+    ///ADMIN APIS
+    adminGetProduct(product_id) : Promise<Product> {
+        return this.sendGet(this.getBaseUrl() + "product/get/" + product_id);
+    }
+    adminAddProduct(product) : Promise<Product> {
+        return this.sendPost(this.getBaseUrl() + "product/add", product);
+    }
+    adminUpdateProduct(product) : Promise<Product> {
+        return this.sendPost(this.getBaseUrl() + "product/update/" + product._id, product);
+    }
+    adminDeleteProduct(product_id) : Promise<Product> {
+        return this.sendDelete(this.getBaseUrl() + "product/delete/" + product_id);
     }
 }

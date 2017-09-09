@@ -1,0 +1,18 @@
+<form (submit)="onSubmit()">
+    <md-form-field>
+        <input mdInput="text" type="text" placeholder="Title" [formControl]="productForm.controls['title']">
+    </md-form-field>
+    <md-form-field>
+        <input mdInput="text" type="text" placeholder="Description" [formControl]="productForm.controls['description']">
+    </md-form-field>
+    <md-form-field>
+        <input mdInput="number" type="number" placeholder="Price" [formControl]="productForm.controls['price']">
+    </md-form-field>
+    <md-form-field>
+        <input mdInput="number" type="number" placeholder="Quantity" [formControl]="productForm.controls['quantity']">
+    </md-form-field>
+
+
+    <br/>
+    <button md-raised-button>Save</button>
+</form>

@@ -6,7 +6,8 @@ import {RegisterComponent} from "./components/register/register.component";
 import {CartComponent} from "./components/cart/cart.component";
 import {ProfileComponent} from "./components/profile/profile.component";
 import {OrdersComponent} from "./components/orders/orders.component";
-import {AuthGuard} from "./services/auth.guard";
+import {AuthGuard} from "./guards/auth.guard";
+import {AdminGuard} from "./guards/admin.guard";
 
 const routes: Routes = [
     {
@@ -18,11 +19,17 @@ const routes: Routes = [
     {path: 'cart', component: CartComponent},
     {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
     {path: 'orders', component: OrdersComponent, canActivate: [AuthGuard]},
+
+    {
+        path: 'admin',
+        loadChildren: 'app/admin/admin.module#AdminModule',
+        canActivate: [AdminGuard]
+    }
 ];
 
 @NgModule({
     imports: [RouterModule.forRoot(routes)],
-    providers: [AuthGuard],
+    providers: [AuthGuard, AdminGuard],
     exports: [RouterModule]
 })
 export class AppRoutingModule {

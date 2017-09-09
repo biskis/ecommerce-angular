@@ -15,7 +15,7 @@ import {HttpModule} from "@angular/http";
 import {SessionService} from "./services/session.service";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {
-    MdButtonModule, MdCardModule, MdInputModule, MdListModule, MdTableModule,
+    MdButtonModule, MdCardModule, MdInputModule, MdListModule,
     MdToolbarModule
 } from "@angular/material";
 import {StoreModule} from "@ngrx/store";
@@ -51,7 +51,7 @@ import { OrdersComponent } from './components/orders/orders.component';
         // EffectsModule.forRoot([])
 
         ToasterModule,
-        MdButtonModule, MdToolbarModule, MdCardModule, MdListModule, MdTableModule, MdInputModule
+        MdButtonModule, MdToolbarModule, MdCardModule, MdListModule, MdInputModule
     ],
     providers: [ApiService, SessionService],
     bootstrap: [AppComponent]

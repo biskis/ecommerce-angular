@@ -5,6 +5,7 @@
     </md-card-header>
     <md-card-content>{{product.description}}</md-card-content>
     <md-card-actions>
-        <button md-raised-button color="primary" (click)="addToCart()">Add to card</button>
+        <button md-raised-button color="primary" (click)="addToCart()" *ngIf="product.quantity > 0">Add to card</button>
+        <div class="error" *ngIf="product.quantity ==  0">Out of stock</div>
     </md-card-actions>
 </md-card>

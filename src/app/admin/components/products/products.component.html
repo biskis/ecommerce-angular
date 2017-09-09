@@ -1,0 +1,22 @@
+<h2>Products <button md-raised-button color="primary" (click)="goAddNew()">Add new</button></h2>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th></th>
+        <th *ngIf="canDelete"></th>
+    </tr>
+    <tr *ngFor="let product of products">
+        <td>{{product._id}}</td>
+        <td>{{product.title}}</td>
+        <td>{{product.description}}</td>
+        <td>${{product.price | number: '1.2-2'}}</td>
+        <td>{{product.quantity}}</td>
+        <td><button md-button color="primary" (click)="goEdit(product)">Edit</button> </td>
+        <td *ngIf="canDelete"><button md-button color="warn" (click)="goDelete(product)">Delete</button> </td>
+    </tr>
+</table>
