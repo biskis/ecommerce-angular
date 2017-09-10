@@ -7,6 +7,8 @@ import {ProductComponent} from './components/product/product.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ToasterModule} from "angular2-toaster";
 import {OrdersComponent} from './components/orders/orders.component';
+import { UsersComponent } from './components/users/users.component';
+import { UserComponent } from './components/user/user.component';
 
 @NgModule({
     imports: [
@@ -20,7 +22,7 @@ import {OrdersComponent} from './components/orders/orders.component';
 
         ToasterModule
     ],
-    declarations: [ProductsComponent, ProductComponent, OrdersComponent]
+    declarations: [ProductsComponent, ProductComponent, OrdersComponent, UsersComponent, UserComponent]
 })
 export class AdminModule {
 }

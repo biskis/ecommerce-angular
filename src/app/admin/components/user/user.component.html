@@ -1,0 +1,58 @@
+<form (submit)="onSubmit()">
+    <md-form-field>
+        <input mdInput="text" type="text" placeholder="Email" [formControl]="userForm.controls['email']">
+    </md-form-field>
+
+    <md-form-field *ngIf="isNew">
+        <input mdInput="password" type="password" placeholder="Password" [formControl]="userForm.controls['password']">
+    </md-form-field>
+    <md-form-field>
+        <input mdInput="text" type="text" placeholder="First name" [formControl]="userForm.controls['first_name']">
+    </md-form-field>
+    <md-form-field>
+        <input mdInput="text" type="text" placeholder="Last name" [formControl]="userForm.controls['last_name']">
+    </md-form-field>
+    <md-select placeholder="Type" [formControl]="userForm.controls['type']">
+        <md-option value="user">user</md-option>
+        <md-option value="manager">manager</md-option>
+        <md-option value="admin">admin</md-option>
+    </md-select>
+
+
+    <h3>Shipping Address</h3>
+    <md-form-field>
+        <input mdInput="text" type="text" placeholder="Street"
+               [formControl]="userForm.controls['address_street']">
+    </md-form-field>
+    <md-form-field>
+        <input mdInput="text" type="text" placeholder="City" [formControl]="userForm.controls['address_city']">
+    </md-form-field>
+    <md-form-field>
+        <input mdInput="text" type="text" placeholder="State"
+               [formControl]="userForm.controls['address_state']">
+    </md-form-field>
+    <md-form-field>
+        <input mdInput="text" type="text" placeholder="Postcode"
+               [formControl]="userForm.controls['address_postcode']">
+    </md-form-field>
+
+    <h3>Billing Address</h3>
+    <md-form-field>
+        <input mdInput="text" type="text" placeholder="Street"
+               [formControl]="userForm.controls['billing_address_street']">
+    </md-form-field>
+    <md-form-field>
+        <input mdInput="text" type="text" placeholder="City" [formControl]="userForm.controls['billing_address_city']">
+    </md-form-field>
+    <md-form-field>
+        <input mdInput="text" type="text" placeholder="State"
+               [formControl]="userForm.controls['billing_address_state']">
+    </md-form-field>
+    <md-form-field>
+        <input mdInput="text" type="text" placeholder="Postcode"
+               [formControl]="userForm.controls['billing_address_postcode']">
+    </md-form-field>
+
+    <br/>
+    <button md-raised-button>Save</button>
+</form>

@@ -1,0 +1,24 @@
+<h2>Users <button md-raised-button color="primary" (click)="goAddNew()">Add new</button></h2>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Type</th>
+    <th>Billing Address</th>
+    <th>Shipping Address</th>
+    <th></th>
+    <th></th>
+  </tr>
+  <tr *ngFor="let user of users ">
+    <td>{{user._id}}</td>
+    <td>{{user.first_name}} {{user.last_name}}</td>
+    <td>{{user.email}}</td>
+    <td>{{user.type}}</td>
+    <td>{{user.address_street}} {{user.address_city}} {{user.address_state}} {{user.address_postcode}}</td>
+    <td>{{user.billing_address_street}} {{user.billing_address_city}} {{user.billing_address_state}} {{user.billing_address_postcode}}</td>
+    <td><button md-button color="primary" (click)="goEdit(user)">Edit</button> </td>
+    <td><button md-button color="warn" (click)="goDelete(user)">Delete</button> </td>
+  </tr>
+</table>

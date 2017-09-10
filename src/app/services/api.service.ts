@@ -6,7 +6,6 @@ import {environment} from "../../environments/environment";
 import {SessionService} from "./session.service";
 import {Product} from "../models/product";
 import {User} from "../models/user";
-import {ToasterService} from "angular2-toaster";
 import {Order} from "../models/order";
 
 
@@ -109,19 +108,38 @@ export class ApiService {
     adminUpdateProduct(product) : Promise<Product> {
         return this.sendPost(this.getBaseUrl() + "product/update/" + product._id, product);
     }
-    adminDeleteProduct(product_id) : Promise<Product> {
+    adminDeleteProduct(product_id) : Promise<Product[]> {
         return this.sendDelete(this.getBaseUrl() + "product/delete/" + product_id);
     }
 
     adminGetOrders() : Promise<Order[]> {
         return this.sendGet(this.getBaseUrl() + "orders/all");
     }
-    adminUpdateStatusOrder(order_id, new_status) : Promise<Product> {
+    adminUpdateStatusOrder(order_id, new_status) : Promise<Order> {
         return this.sendPost(this.getBaseUrl() + "order/set_status/" + order_id, {status: new_status});
     }
-    adminDeleteOrder(order_id) : Promise<Product> {
+    adminDeleteOrder(order_id) : Promise<Order[]> {
         return this.sendDelete(this.getBaseUrl() + "order/delete/" + order_id);
     }
+
+
+
+    adminGetUsers() : Promise<User[]> {
+        return this.sendGet(this.getBaseUrl() + "users/all");
+    }
+    adminGetUser(user_id) : Promise<any> {
+        return this.sendGet(this.getBaseUrl() + "user/get/" + user_id);
+    }
+    adminAddUser(user) : Promise<User> {
+        return this.sendPost(this.getBaseUrl() + "user/add", user);
+    }
+    adminUpdateUser(user) : Promise<User> {
+        return this.sendPost(this.getBaseUrl() + "user/update/" + user._id, user);
+    }
+    adminDeleteUser(user_id) : Promise<User[]> {
+        return this.sendDelete(this.getBaseUrl() + "user/delete/" + user_id);
+    }
+
 
 
 }

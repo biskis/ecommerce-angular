@@ -32,6 +32,15 @@ export class SessionService {
         }
         return null;
     }
+    isAdmin() {
+        let user = this.getUser();
+        return user && user.type === "admin";
+    }
+    isManager() {
+        let user = this.getUser();
+        return user && user.type === "manager";
+    }
+
 
     removeSession() {
         localStorage.removeItem("auth_key");

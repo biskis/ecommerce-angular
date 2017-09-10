@@ -19,7 +19,7 @@
             </div>
         </td>
         <td>{{order.address.street}} {{order.address.city}} {{order.address.state}} {{order.address.postcode}}</td>
-        <td>{{order.address.street}} {{order.address.city}} {{order.address.state}} {{order.address.postcode}}</td>
+        <td>{{order?.billing_address?.street}} {{order?.billing_address?.city}} {{order?.billing_address?.state}} {{order?.billing_address?.postcode}}</td>
         <td>${{order.prices.total | number: '1.2-2'}}</td>
         <td>{{order.status}}</td>
         <td *ngIf="canChangeStatus">

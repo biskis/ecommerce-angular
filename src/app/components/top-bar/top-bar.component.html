@@ -1,14 +1,21 @@
 <md-toolbar color="primary">
-  <span routerLink="/">E-commerce</span>
+    <span routerLink="/">E-commerce</span>
 
-  <span class="fill-remaining-space"></span>
+    <span class="fill-remaining-space"></span>
 
-  <span>
-    <a routerLink="/cart" md-button>Cart ({{cartItems.length}} items)</a>
-    <a routerLink="/login" md-button *ngIf="!sessionService.getSession()">Login</a>
-    <a routerLink="/register" md-button *ngIf="!sessionService.getSession()">Register</a>
-    <a routerLink="/profile" md-button *ngIf="sessionService.getSession()">Profile</a>
-    <a routerLink="/orders" md-button *ngIf="sessionService.getSession()">Orders</a>
+    <span>
+
+    <a routerLink="/admin/users" md-button *ngIf="sessionService.isAdmin()">Users</a>
+    <a routerLink="/admin/products" md-button *ngIf="sessionService.isAdmin() || sessionService.isManager()">Products</a>
+    <a routerLink="/admin/orders" md-button *ngIf="sessionService.isAdmin() || sessionService.isManager()">Orders</a>
+
+    <div *ngIf="!sessionService.isAdmin() && !sessionService.isManager()">
+        <a routerLink="/cart" md-button>Cart ({{cartItems.length}} items)</a>
+        <a routerLink="/login" md-button *ngIf="!sessionService.getSession()">Login</a>
+        <a routerLink="/register" md-button *ngIf="!sessionService.getSession()">Register</a>
+        <a routerLink="/profile" md-button *ngIf="sessionService.getSession()">Profile</a>
+        <a routerLink="/orders" md-button *ngIf="sessionService.getSession()">Orders</a>
+    </div>
     <a (click)="logout()" md-button *ngIf="sessionService.getSession()">Logout</a>
   </span>
 </md-toolbar>

@@ -18,10 +18,10 @@ export class TopBarComponent implements OnInit {
 
     constructor(private store: Store<fromRoot.State>, public sessionService: SessionService, private router: Router) {
         this.sub = this.store.select(fromRoot.getCart).subscribe((data) => this.cartItems = data);
+
     }
 
     ngOnInit() {
-
     }
 
     ngOnDestroy() {
