@@ -9,13 +9,13 @@
     <a routerLink="/admin/products" md-button *ngIf="sessionService.isAdmin() || sessionService.isManager()">Products</a>
     <a routerLink="/admin/orders" md-button *ngIf="sessionService.isAdmin() || sessionService.isManager()">Orders</a>
 
-    <div *ngIf="!sessionService.isAdmin() && !sessionService.isManager()">
+    <span *ngIf="!sessionService.isAdmin() && !sessionService.isManager()">
         <a routerLink="/cart" md-button>Cart ({{cartItems.length}} items)</a>
         <a routerLink="/login" md-button *ngIf="!sessionService.getSession()">Login</a>
         <a routerLink="/register" md-button *ngIf="!sessionService.getSession()">Register</a>
         <a routerLink="/profile" md-button *ngIf="sessionService.getSession()">Profile</a>
         <a routerLink="/orders" md-button *ngIf="sessionService.getSession()">Orders</a>
-    </div>
+    </span>
     <a (click)="logout()" md-button *ngIf="sessionService.getSession()">Logout</a>
   </span>
 </md-toolbar>

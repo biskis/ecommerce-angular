@@ -12,6 +12,7 @@
         <input mdInput="password" type="password" placeholder="Password" [formControl]="registerForm.controls['password']">
     </md-form-field>
 
+    <re-captcha (captchaResponse)="handleCorrectCaptcha($event)" site_key="6LdREjAUAAAAAAd64P-Rk4GQ59RIJtLOauo7uUNc"></re-captcha>
     <br/>
     <button md-raised-button>Register</button>
 </form>

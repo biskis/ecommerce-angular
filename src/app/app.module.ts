@@ -25,6 +25,7 @@ import { OrdernpmPipe } from './pipes/ordernpm.pipe';
 import {ToasterModule} from "angular2-toaster";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { OrdersComponent } from './components/orders/orders.component';
+import {ReCaptchaModule} from "angular2-recaptcha";
 
 @NgModule({
     declarations: [
@@ -49,6 +50,8 @@ import { OrdersComponent } from './components/orders/orders.component';
 
         StoreModule.forRoot(reducers, {metaReducers}),
         // EffectsModule.forRoot([])
+
+        ReCaptchaModule,
 
         ToasterModule,
         MdButtonModule, MdToolbarModule, MdCardModule, MdListModule, MdInputModule

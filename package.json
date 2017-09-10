@@ -26,6 +26,7 @@
     "@ngrx/core": "^1.2.0",
     "@ngrx/effects": "^4.0.5",
     "@ngrx/store": "^4.0.3",
+    "angular2-recaptcha": "^0.6.0",
     "angular2-toaster": "^4.0.1",
     "core-js": "^2.4.1",
     "lodash": "^4.17.4",

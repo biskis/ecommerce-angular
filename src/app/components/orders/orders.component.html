@@ -1,4 +1,4 @@
-<table>
+<table *ngIf="orders && orders.length > 0">
     <tr>
         <th class="col_title">Products</th>
         <th class="col_price">Price</th>
@@ -12,3 +12,5 @@
         <td class="col_status">{{order.status}}</td>
     </tr>
 </table>
+
+<h1 *ngIf="orders && orders.length == 0">No orders found</h1>

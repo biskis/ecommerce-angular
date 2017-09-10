@@ -12,6 +12,7 @@ import {Router} from "@angular/router";
 export class RegisterComponent implements OnInit {
 
     registerForm: FormGroup;
+    private recaptcha_token: string = null;
 
     constructor(formBuilder: FormBuilder, private apiService: ApiService, private sessionService: SessionService, private router: Router) {
         this.registerForm = formBuilder.group({
@@ -25,17 +26,25 @@ export class RegisterComponent implements OnInit {
     ngOnInit() {
     }
 
+    handleCorrectCaptcha(data) {
+        console.log(data);
+        this.recaptcha_token = data;
+    }
+
     onRegister() {
-        console.log("on register")
-        this.apiService.register({
-            'first_name': this.registerForm.controls['first_name'].value,
-            'last_name': this.registerForm.controls['last_name'].value,
-            'email': this.registerForm.controls['email'].value,
-            'password': this.registerForm.controls['password'].value,
-        }).then(data => {
-            this.sessionService.setSession(data.auth_key, data.user);
-            this.router.navigateByUrl("/");
-        })
+        if(this.registerForm.valid && this.recaptcha_token) {
+            console.log("on register")
+            this.apiService.register({
+                'first_name': this.registerForm.controls['first_name'].value,
+                'last_name': this.registerForm.controls['last_name'].value,
+                'email': this.registerForm.controls['email'].value,
+                'password': this.registerForm.controls['password'].value,
+                'recaptcha': this.recaptcha_token
+            }).then(data => {
+                this.sessionService.setSession(data.auth_key, data.user);
+                this.router.navigateByUrl("/");
+            })
+        }
     }
 
 }
